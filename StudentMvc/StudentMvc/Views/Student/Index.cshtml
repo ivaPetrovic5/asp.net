@@ -1,0 +1,52 @@
+﻿@model IEnumerable<StudentMvc.Models.Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table border="1">
+    <tr>
+        <th width="100px" style="text-align:center">Student ID</th>
+        <th width="200px" style="text-align:center">First Name</th>
+        <th width="200px" style="text-align:center">Last Name</th>
+        <th width="200px" style="text-align:center">City</th>
+        <th width="100px" style="text-align:center">Age</th>
+        <th width="100px" style="text-align:center">Delete</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td align="center">
+                @item.Id
+            </td>
+            <td align="center">
+                @item.FirstName
+            </td>
+            <td align="center">
+                @item.LastName
+            </td>
+            <td align="center">
+                @item.City
+            </td>
+            <td align="center">
+                @item.Age
+            </td>
+            <td align="center">
+                @Html.ActionLink(
+                "Delete",
+                "Delete",
+                new { studentId = item.Id },
+                new { onclick = "return confirm('Are you sure you wish to delete this student?');" })
+            </td>
+        </tr>
+
+    }
+</table>
+<br />
+<div>
+    @Html.ActionLink("Add new student", "Create")
+</div>
+

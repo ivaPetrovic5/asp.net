@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ToDoMvc.Models.ToDoItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/base.css")
+    @Styles.Render("~/Content/index.css")
+    @Styles.Render("~/Content/app.css")
+</head>
+<body>
+    <br />
+    <section class="todoapp">
+        <header class="header">
+            <h1>todos</h1>
+            @using (Html.BeginForm("AddItem", "ToDo", FormMethod.Get))
+            {
+                <input id="itemDescription" name="itemDescription" class="new-todo" placeholder="What needs to be done?" autofocus="">
+                <input type="button" style="position: absolute; left: -9999px" />
+            }
+
+        </header>
+        <section class="main" style="display: block;">
+            <input id="toggle-all" class="toggle-all" type="checkbox">
+            <label for="toggle-all">Mark all as complete</label>
+            <ul class="todo-list">
+                @foreach (var item in Model)
+                {
+                    <li data-id="5acee6f2-e22c-45e7-8bcd-7999aae47ddf">
+                        <div class="view">
+                            <input class="toggle" type="checkbox" checked=@item.Done onclick="location.href='@Url.Action("SetAsDone", "ToDo", new { itemId = @item.Id, isDone = @item.Done })'">
+                            <label><input class="edit2" value=@item.Description></label>
+                            <button class="destroy" onclick="location.href='@Url.Action("DeleteItem", "ToDo", new { itemId = @item.Id })'"></button>
+                        </div>
+                        <input class="edit" value="dsad">
+                    </li>
+                }
+            </ul>
+        </section>
+    </section>
+    <footer class="info">
+        <p>My .net TodoMVC</a></p>
+    </footer>
+</body>
+</html>
