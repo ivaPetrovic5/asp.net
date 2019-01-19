@@ -22,7 +22,12 @@
                     <ItemTemplate>
                         <asp:LinkButton ID="lbDelete" runat="server" OnClick="lbDeleteStudent_Click" CommandArgument="<%#Item.Id %>" Text="Delete"></asp:LinkButton>
                     </ItemTemplate>
-                </asp:TemplateField>  
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Edit">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lbEdit" runat="server" OnClick="lbEditStudent_Click" CommandArgument="<%#Item.Id %>" Text="Edit"></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField> 
             </Columns>
         </asp:GridView>
     </form>

@@ -76,5 +76,12 @@ namespace StudentWebForms
                 }
             }
         }
+
+        protected void lbEditStudent_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)(sender);
+            int studentId = Convert.ToInt32(btn.CommandArgument);
+            Response.Redirect("StudentEdit.aspx?id=" + studentId);
+        }
     }
 }
